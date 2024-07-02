@@ -16,19 +16,18 @@ export const Sidebar = styled.aside`
   overflow-y: hidden;
 `;
 
-
-export const Main = styled.section `
+export const Main = styled.section`
   background: ${(props) => props.theme.colors.container};
   width: 100%;
   height: 100vh;
-  padding: 40px;
   overflow-y: hidden;
+  padding: 40px;
 
-  @media screen and (max-width: ${(props) => props.theme.breakpoints.md}){
+  @media screen and (max-width: ${(props) => props.theme.breakpoints.md}) {
     height: 100%;
   }
 
-  @media screen and (max-width: ${(props) => props.theme.breakpoints.sm}){
+  @media screen and (max-width: ${(props) => props.theme.breakpoints.sm}) {
     padding: 40px 20px;
   }
 `;
