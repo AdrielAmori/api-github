@@ -56,9 +56,11 @@ export const theme = {
   },
 };
 
-export function Theme({ children }) {
+function Theme({ children }) {
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 }
+
+export default Theme;
 
 Theme.propTypes = {
   children: PropTypes.node.isRequired,
