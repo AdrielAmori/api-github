@@ -14,6 +14,9 @@ export const Sidebar = styled.aside`
   min-width: 20rem;
   max-height: 100vh;
   overflow-y: hidden;
+  text-align: left;
+
+  
 `;
 
 export const Main = styled.section`

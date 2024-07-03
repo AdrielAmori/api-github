@@ -33,11 +33,13 @@ export const Avatar = styled.img`
 
 export const Login = styled.h1`
   font-size: ${(props) => props.theme.fontSize.title};
+  padding-left: 20px;
 `;
 
 export const Name = styled.h2`
   font-size: ${(props) => props.theme.fontSize.subtitle};
   font-weight: normal;
+  padding-left: 20px;
 
   @media screen and (max-width: ${(props) => props.theme.breakpoints.md}) {
     display: none;

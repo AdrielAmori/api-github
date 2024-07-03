@@ -1,37 +1,55 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { MdGroup, MdLocationCity, MdWork, MdLink } from 'react-icons/md';
 
 import { Container, Header, Avatar, Login, Name, Inner, Data } from './styles';
 
-function Profile() {
-  return (
-    <Container>
-      <Header>
-        <Avatar src='https://avatars.githubusercontent.com/u/144482242?v=4' alt='Avatar' />
-        <div>
-          <Login>AdrielAmori</Login>
-          <Name>Adriel&nbsp; Arruda</Name>
-        </div>
-      </Header>
-      <Inner>
+const Profile = ({ user }) => (
+  <Container>
+    <Header>
+      <Avatar src={user.avatar_url} alt='Avatar' />
+      <div>
+        <Login>{user.login}</Login>
+        <Name>{user.name}</Name>
+      </div>
+    </Header>
+    <Inner>
+      <Data>
+        <MdGroup size={20} />
+        {user.following}&nbsp;<i>seguidores</i>&nbsp;&middot; {user.followers}&nbsp;<i>seguindo</i>
+      </Data>
+      {user.company && (
         <Data>
-          <MdGroup size={20} />
-          30&nbsp;<i>seguidores</i>&nbsp;&middot; 10&nbsp;<i>seguindo</i>
+          <MdWork size={20} /> {user.company}
         </Data>
+      )}
+      {user.location && (
         <Data>
-          <MdWork size={20} /> Freelancer
+          <MdLocationCity size={20} /> {user.location}
         </Data>
-        <Data>
-          <MdLocationCity size={20} /> Fortaleza
-        </Data>
+      )}
+      {user.blog && (
         <Data>
           <MdLink size={20} />
-          <a href='https://github.com/adrielamori'>https://github.com/</a>
+          <a href={`\\${user.blog}`}>{user.blog}</a>
         </Data>
-      </Inner>
-    </Container>
-  );
-}
+      )}
+    </Inner>
+  </Container>
+);
+
+Profile.propTypes = {
+  user: PropTypes.shape({
+    login: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    avatar_url: PropTypes.string.isRequired,
+    followers: PropTypes.number.isRequired,
+    following: PropTypes.number.isRequired,
+    company: PropTypes.string,
+    blog: PropTypes.string,
+    location: PropTypes.string,
+  }).isRequired,
+};
 
 export default Profile;
