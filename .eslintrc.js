@@ -4,21 +4,21 @@ module.exports = {
     es2021: true,
     jest: true,
   },
-  extends: ["plugin:react/recommended", "airbnb", "prettier"],
+  extends: ['plugin:react/recommended', 'airbnb', 'prettier'],
   overrides: [],
   parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
+    ecmaVersion: 'latest',
+    sourceType: 'module',
   },
-  plugins: ["react"],
+  plugins: ['react'],
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'import/prefer-default-export': 'off',
     'react/function-component-definition': [
-      2,
+      'error',
       {
-        namedComponents: 'function-declaration|function-expression|arrow-function',
-        unnamedComponents: 'function-expression|arrow-function',
+        namedComponents: 'arrow-function',
+        unnamedComponents: 'arrow-function',
       },
     ],
   },
