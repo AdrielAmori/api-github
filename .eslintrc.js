@@ -14,7 +14,12 @@ module.exports = {
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'import/prefer-default-export': 'off',
+    'react/function-component-definition': [
+      2,
+      {
+        namedComponents: 'function-declaration|function-expression|arrow-function',
+        unnamedComponents: 'function-expression|arrow-function',
+      },
+    ],
   },
 };
-
-
