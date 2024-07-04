@@ -5,8 +5,8 @@ import Filter from './Filter';
 import Repositories from './Repositories';
 
 import { Container, Sidebar, Main } from './styles';
-// import { Description } from './Repositories/Repository/styles';
-// import { Login } from './Profile/styles';
+
+import { getLangsFrom } from '../../services/api';
 
 const RepositoriesPage = () => {
   const user = {
@@ -59,13 +59,7 @@ const RepositoriesPage = () => {
     },
   ];
 
-  // Calculo dos filters
-  const languages = [
-    { name: 'Javascript', count: 2, color: '#FCC419' },
-    { name: 'Python', count: 3, color: '#23DB42' },
-    { name: 'PHP', count: 2, color: '#3498db' },
-    { name: 'Ruby', count: 1, color: '#e74c3c' },
-  ];
+  const languages = getLangsFrom(repositories);
 
   return (
     <Container>
@@ -74,7 +68,7 @@ const RepositoriesPage = () => {
         <Filter languages={languages} />
       </Sidebar>
       <Main>
-        <Repositories repositories={repositories}/>
+        <Repositories/>
       </Main>
     </Container>
   );
