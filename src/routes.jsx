@@ -7,7 +7,7 @@ import RepositoriesPage from './pages/RepositoriesPage';
 const  RoutesComponent = () => (
     <Router>
       <Routes>
-        <Route path="/repositories" element={<RepositoriesPage />} />
+        <Route path="/:login/repositories" element={<RepositoriesPage />} />
         <Route path="/" element={<MainPage />} />
       </Routes>
     </Router>
