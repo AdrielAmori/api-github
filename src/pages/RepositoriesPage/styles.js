@@ -1,5 +1,12 @@
 import styled from 'styled-components';
 
+export const Loading = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+`;
+
 export const Container = styled.main`
   display: flex;
   min-height: 100vh;
@@ -16,7 +23,7 @@ export const Sidebar = styled.aside`
   overflow-y: hidden;
   text-align: left;
 
-  
+
 `;
 
 export const Main = styled.section`

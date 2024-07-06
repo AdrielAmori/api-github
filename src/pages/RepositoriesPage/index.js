@@ -1,26 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Profile from './Profile';
 import Filter from './Filter';
 import Repositories from './Repositories';
 
-import { Container, Sidebar, Main } from './styles';
+import { Loading, Container, Sidebar, Main } from './styles';
 
-import { getLangsFrom } from '../../services/api';
+import { getUser, getLangsFrom } from '../../services/api';
 
 const RepositoriesPage = () => {
+  const [user, setUser] = useState();
   const [currentLanguage, setCurrentLanguage] = useState();
+  const [loading, setLoading] = useState(true);
 
-  const user = {
-    login: 'AdrielAmori',
-    name: 'Adriel Arruda Amorim',
-    avatar_url: 'https://avatars.githubusercontent.com/u/144482242?v=4',
-    followers: 0,
-    following: 0,
-    company: null,
-    blog: 'https://github.com/adrielamori',
-    location: 'Fortaleza',
-  };
+  useEffect(() => {
+    const loadData = async () => {
+      const [userResponse] = await Promise.all([getUser('AdrielAmori')]);
+
+      setUser(userResponse.data);
+
+      setLoading(false);
+    };
+
+    loadData();
+  }, []);
+
+  // const user = {
+  //   login: 'AdrielAmori',
+  //   name: 'Adriel Arruda Amorim',
+  //   avatar_url: 'https://avatars.githubusercontent.com/u/144482242?v=4',
+  //   followers: 0,
+  //   following: 0,
+  //   company: null,
+  //   blog: 'https://github.com/adrielamori',
+  //   location: 'Fortaleza',
+  // };
 
   const repositories = [
     {
@@ -72,6 +86,10 @@ const RepositoriesPage = () => {
   const onFilterClick = (language) => {
     setCurrentLanguage(language);
   };
+
+  if(loading){
+    return <Loading> Carregando... </Loading>
+  }
 
   return (
     <Container>

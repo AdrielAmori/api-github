@@ -5,7 +5,7 @@ import { Container, Logo, Title, Form, Input, Button } from './styles';
 
 import githubLogo from '../../assets/images/github-logo.svg';
 
-export default function MainPage() {
+const MainPage = () => {
   const [login, setLogin] = useState('');
 
   return (
@@ -13,12 +13,7 @@ export default function MainPage() {
       <Logo src={githubLogo} alt='API GITHUB' />
       <Title>API Github</Title>
       <Form>
-        <Input
-          placeholder='usuário'
-          value={login}
-          onChange={(e) =>
-          setLogin(e.target.value)}
-        />
+        <Input placeholder='usuário' value={login} onChange={(e) => setLogin(e.target.value)} />
         <Button to={`${login}/repositories`}>
           <MdSearch size={42} />
         </Button>
@@ -26,3 +21,5 @@ export default function MainPage() {
     </Container>
   );
 }
+
+export default MainPage;
